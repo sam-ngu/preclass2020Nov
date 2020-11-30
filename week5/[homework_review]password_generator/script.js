@@ -1,86 +1,84 @@
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 
-
 // Write password to the #password input
 function writePassword() {
+    // define charset
+    const lowercaseCharset = "abcdefghijklmnopqrstuvwxyz";
+    const uppercaseCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numberCharset = "1234567890";
+    const symbolCharset = "!@#$%^&()";
 
-  // 
-  // define charset
-  const lowercaseCharset = 'abcdefghijklmnopqrstuvwxyz';
-  const uppercaseCharset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const numberCharset = '1234567890';
-  const symbolCharset = '!@#$%^&()';
+    // find a way to get random char from charset
+    function getRandomChar(charset) {
+        // we need to use the math thing
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        return charset[randomIndex];
+    }
 
+    // we will get the num of char from the user
+    const characterLength = prompt(
+        "How many characters do you want (8 - 128 characters"
+    );
 
-  // find a way to get random char from charset
-  function getRandomChar(charset){
-      // we need to use the math thing
-      const randomIndex = Math.floor(Math.random() * charset.length);
-      return charset[randomIndex];
-  }
+    const userEnterNothing = characterLength.length === 0;
 
+    const userEnterS__t = isNaN(Number(characterLength));
 
-  // we will get the num of char from the user
-  const characterLength = prompt('How many characters do you want (8 - 128 characters');
-  
-  const userEnterNothing = characterLength.length === 0;
+    console.log({ userEnterNothing });
+    console.log({ userEnterS__t });
 
-  const userEnterS__t = isNaN(Number(characterLength));
+    if (userEnterNothing || userEnterS__t) {
+        alert("please enter a valid number bro");
+        return;
+    }
 
-  console.log({userEnterNothing});
-  console.log({userEnterS__t});
+    const userWantsLowercase = confirm("U want lowerase bro?");
+    const userWantsUppercase = confirm("UWat about upper?");
+    const userWantsNumber = confirm("Number?");
+    const userWantsSymbol = confirm("U want symbol bro?");
 
+    let charset = "";
 
-  if( (userEnterNothing || userEnterS__t) ){
-    alert('please enter a valid number bro');
-    return;
-  }
-  
-  const userWantsLowercase = confirm("U want lowerase bro?");
-  const userWantsUppercase = confirm("UWat about upper?");
-  const userWantsNumber = confirm("Number?");
-  const userWantsSymbol = confirm("U want symbol bro?");
+    if (userWantsLowercase) {
+        charset = charset + lowercaseCharset;
+    }
 
+    if (userWantsUppercase) {
+        charset = charset + uppercaseCharset;
+    }
 
-  let charset = "";
+    if (userWantsNumber) {
+        charset = charset + numberCharset;
+    }
 
-  if(userWantsLowercase){
-      charset = charset + lowercaseCharset;
-  }
+    if (userWantsSymbol) {
+        charset = charset + symbolCharset;
+    }
 
-  if(userWantsUppercase){
-      charset = charset + uppercaseCharset;
-  }
+    // stop user if selected nothing
+    if(!userWantsLowercase && !userWantsUppercase && !userWantsNumber && !userWantsSymbol){
+        alert('please select at least 1 criteria');
+        return;
+    }
 
-  if (userWantsNumber) {
-      charset = charset + numberCharset;
-  }
+    // loop for that number of times
+    const loopTimes = Number(characterLength);
 
-  if (userWantsSymbol) {
-      charset = charset + symbolCharset;
-  }
+    let password = "";
 
-  // loop for that number of times
-  const loopTimes = Number(characterLength);
+    for (let index = 0; index < loopTimes; index++) {
+        // for each iteration we need to grab a random char from
+        // charset
+        const randomChar = getRandomChar(charset);
 
-  let password = "";
+        // this random char will be a part of our final pass
+        password = password + randomChar;
+    }
 
-  for (let index = 0; index < loopTimes; index++) {
-      // for each iteration we need to grab a random char from
-      // charset
-      const randomChar = getRandomChar(charset);
+    let passwordText = document.querySelector("#password");
 
-      // this random char will be a part of our final pass
-    password = password + randomChar;
-  }
-    
-  console.log(password);
- 
-  let passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+    passwordText.value = password;
 }
 
 // Add event listener to generate button
