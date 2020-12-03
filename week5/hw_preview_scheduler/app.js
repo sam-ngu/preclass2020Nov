@@ -8,7 +8,7 @@ setInterval(function(){
 
 
 // set up table
-// shouldn't create the timetable via raw js
+// shouldn't create the timetable via raw html
 
 const times = ["9am", '10am', '11am'];
 // for loop 
