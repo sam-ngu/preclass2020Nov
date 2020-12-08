@@ -33,12 +33,13 @@ for (let index = 0; index < times.length; index++) {
 
         // row
         const row;
-
         // const time = row.firstChild().text()
 
         // i want to get the value of textarea
         // data = row.secondChild().firstChild().val()
-        
+        // TODO: 
+
+        // FIXME: 
         localStorage.setItem('data-row-' + time, data)
 
     });
