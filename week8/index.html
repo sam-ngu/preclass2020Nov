@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // stack 
+        // function sayHello(){
+        //     console.log('hello');
+        //     sayHello()
+        //     const hey = 123;
+        // }
+
+        // console.log(hey);
+
+        // sayHello();
+
+        // heap
+        // garbage collector
+
+        let car = {
+            name: 'holda'
+        }
+
+        let car2 = car;
+        car2.name = 'abc';
+        
+        Object.assign(car, {
+            colour: 'blue'
+        })
+        console.log(car);
+
+        const copy = Object.assign({}, car);
+
+        copy.name = '1223'
+
+        console.log(car);
+
+
+        console.log(car);
+        console.log(car.name);
+
+
+
+    </script>
+</body>
+</html>
