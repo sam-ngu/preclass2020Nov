@@ -1,16 +1,16 @@
 // OOP
 
 // 1. procedural programming
-const hey = 123;
+let hey = 123;
 if(hey===123){
     hey = hey + 3
 }
 
-const width = 15
+// const width = 15
 
-const area =  width * width;
+// const area =  width * width;
 
-const total = area * 5;
+// const total = area * 5;
 
 // 2. OOP -- store the magic insides object
 console.log()
@@ -93,5 +93,4 @@ console.log(results);
 const result2 = fruits.filter((fruit) => fruit.length >  4 )
                     .map((fruit) => fruit.toUpperCase() )
 console.log(result2);
-
 
